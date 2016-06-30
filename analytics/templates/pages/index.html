@@ -2,17 +2,127 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Buscar Bolsas de Estudos</title>
+    <title>Pesquisa de Bolsas de Estudos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
 </head>
 <body>
-{% if scholarship_list %}
-    <ul>
-        {% for s in scholarship_list %}
-            <li><a href="/polls/{{ s.nm_instituicao_ensino_superior }}/">{{ s.vl_ano }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Não foram encontradas bolsas de estudos</p>
-{% endif %}
+<br/>
+<br/>
+<div class="container">
+    {% if error_message %}
+        <div class="alert alert-danger fade in">
+            <p>{{ error_message }}</p>
+        </div>
+    {% endif %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">Pesquisa de Bolsa de Estudos</div>
+        <div class="panel-body">
+            <form role="form" class="form-horizontal" action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="selectUniversidade">Universidade:</label>
+                    <div class="col-xs-3">
+                        <select name="universidade" id="selectUniversidade" class="form-control selectpicker">
+                            <option value="{{ none }}">Escolha a universidade</option>
+                            {% for u in universidade_list %}
+                                {% if u.nm_instituicao_ensino_superior == universidade %}
+                                    <option value="{{ u.nm_instituicao_ensino_superior }}"
+                                            selected>{{ u.nm_instituicao_ensino_superior }}</option>
+                                {% else %}
+                                    <option value="{{ u.nm_instituicao_ensino_superior }}">{{ u.nm_instituicao_ensino_superior }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="selectPrograma">Programa:</label>
+                    <div class="col-xs-3">
+                        <select name="programa" id="selectPrograma" class="form-control selectpicker">
+                            <option value="{{ none }}">Escolha o programa</option>
+                            {% for p in programa_list %}
+                                {% if p.nm_programa == programa %}
+                                    <option value="{{ p.nm_programa }}" selected>{{ p.nm_programa }}</option>
+                                {% else %}
+                                    <option value="{{ p.nm_programa }}">{{ p.nm_programa }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="selectAno">Ano:</label>
+                    <div class="col-xs-2">
+                        <select name="ano" id="selectAno" class="form-control selectpicker">
+                            <option value="{{ none }}">Escolha o ano</option>
+                            {% for a in ano_list %}
+                                {% if a.vl_ano == ano|add:0 %}
+                                    <option value="{{ a.vl_ano }}" selected>{{ a.vl_ano }}</option>
+                                {% else %}
+                                    <option value="{{ a.vl_ano }}">{{ a.vl_ano }}</option>
+                                {% endif %}
+
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <button name="pesquisar" type="submit" class="btn btn-primary">Pesquisar</button>
+            </form>
+        </div>
+    </div>
+
+    </br>
+    </br>
+
+    <div class="panel panel-default">
+        <table class="table table-striped table-bordered" cellspacing="0">
+            <thead>
+            <tr>
+                <th>Universidade</th>
+                <th>Ano</th>
+                <th>Programa</th>
+                <th>Área de Conhecimento</th>
+                <th>Grande Àrea</th>
+                <th>Programa de Fomento</th>
+                <th>Iniciação Científica</th>
+                <th>Mestrado Profissional</th>
+                <th>Mestrado</th>
+                <th>Doutorado</th>
+                <th>Pós Doutorado</th>
+            </tr>
+            </thead>
+            {% if bolsa_estudo_list %}
+                {% for b in bolsa_estudo_list %}
+                    <tr>
+                        <td>{{ b.nm_instituicao_ensino_superior }}</td>
+                        <td class="text-center">{{ b.vl_ano }}</td>
+                        <td>{{ b.nm_programa }}</td>
+                        <td>{{ b.nm_area_conhecimento }}</td>
+                        <td>{{ b.nm_grande_area }}</td>
+                        <td>{{ b.nm_programa_fomento }}</td>
+                        <td class="text-right">{{ b.vl_iniciacao_cientifica }}</td>
+                        <td class="text-right">{{ b.vl_mestrado_profissional }}</td>
+                        <td class="text-right">{{ b.vl_mestrado }}</td>
+                        <td class="text-right">{{ b.vl_doutorado }}</td>
+                        <td class="text-right">{{ b.vl_pos_doc }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="11" class="text-center">Não foram encotradas bolsas de estudo</td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+
+</div>
 </body>
 </html>
