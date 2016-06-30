@@ -2,11 +2,6 @@ from __future__ import unicode_literals
 
 from django.db import models
 import xlrd
-from numpy.core.tests.test_umath_complex import check_complex_value
-from skimage.filters.edges import scharr
-
-import scholarship
-
 
 class ScholarshipInfo(models.Model):
     id_bolsa = models.AutoField(primary_key=True)
@@ -41,6 +36,7 @@ class DataFile(models.Model):
     data = models.FileField()
 
     def save(self, *args, **kwargs):
+        super(DataFile, self).save(*args, **kwargs)
         filename = self.data.path
         book = xlrd.open_workbook(filename)
         sheet = book.sheet_by_index(0)
@@ -69,9 +65,6 @@ class DataFile(models.Model):
                 scholarship_info.vl_pos_doc = self.__check_value(sheet.cell_value(row, 21))
                 scholarship_info.vl_supervisao = self.__check_value(sheet.cell_value(row, 22))
                 scholarship_info.save()
-
-        super(DataFile, self).save(*args, **kwargs)
-
 
     def __check_value(self, value):
         if value == "":

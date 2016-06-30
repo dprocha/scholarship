@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Bolsas de Estudos</title>
+</head>
+<body>
+{% if scholarship_list %}
+    <ul>
+        {% for s in scholarship_list %}
+            <li><a href="/polls/{{ s.nm_instituicao_ensino_superior }}/">{{ s.vl_ano }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Não foram encontradas bolsas de estudos</p>
+{% endif %}
+</body>
+</html>

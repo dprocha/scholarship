@@ -1,7 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+from django.views import generic
 
-from django.http import HttpResponse
+from .models import ScholarshipInfo
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+class IndexView(generic.ListView):
+    template_name = 'pages/index.html'
+    context_object_name = 'scholarship_list'
+
+    def get_queryset(self):
+        return ScholarshipInfo.objects.order_by('vl_ano')
+
+
+class DetailView(generic.DetailView):
+    model = ScholarshipInfo
+    template_name = 'pages/detail.html'
