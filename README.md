@@ -1,7 +1,7 @@
 #  Análise de Dados da Distribuição de Bolsas de Pós-graduação em IES do Rio Grande do Sul 
-<p style="text-align: center;">**Diego Pereira da Rocha, Jarden Silveira Caldas**</p>
-<p style="text-align: center;">Mestrado em Computação Aplicada – Universidade do Vale do Rio dos Sinos – Campus São Leopoldo – São Leopoldo – RS– Brasil</p>
-<p style="text-align: center;">*dpr160885@gmail.com, jardenscaldas@gmail.com*</p>
+                                       **Diego Pereira da Rocha, Jarden Silveira Caldas**
+   Mestrado em Computação Aplicada – Universidade do Vale do Rio dos Sinos – Campus São Leopoldo – São Leopoldo – RS– Brasil
+                                         *dpr160885@gmail.com, jardenscaldas@gmail.com*
 
 ######  1.Tema ######
 O tema do trabalho é análise da quantidade de bolsas de pós-graduação distribuídas no estado do Rio Grande do Sul nos últimos vinte anos. 
