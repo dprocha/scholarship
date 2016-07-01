@@ -28,5 +28,5 @@ Abaixo segue as tecnologias utilizadas para implementação desse projeto
 
 ###### 7.Imagens do Sistema  ######
 
-![GitHub Logo](/images/image1.png)
-![GitHub Logo](/images/image2.png)
+![GitHub Logo](/images/image1.jpg)
+![GitHub Logo](/images/image2.jpg)
