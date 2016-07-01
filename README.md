@@ -25,3 +25,8 @@ Abaixo segue as tecnologias utilizadas para implementação desse projeto
 * Python 3.5.1
 * Banco de dados MySQL 5.7
 * Django 1.9.0
+
+###### 7.Imagens do Sistema  ######
+
+![GitHub Logo](/images/image1.png)
+![GitHub Logo](/images/image2.png)
