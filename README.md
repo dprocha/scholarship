@@ -1,5 +1,5 @@
-Análise de Dados da Distribuição de Bolsas de Pós-graduação em IES do Rio Grande do Sul 
-Diego Pereira da Rocha, Jarden Silveira Caldas
+#  Análise de Dados da Distribuição de Bolsas de Pós-graduação em IES do Rio Grande do Sul 
+					**Diego Pereira da Rocha, Jarden Silveira Caldas**
 Mestrado em Computação Aplicada – Universidade do Vale do Rio dos Sinos – Campus São Leopoldo – São Leopoldo – RS– Brasil
 dpr160885@gmail.com, jardenscaldas@gmail.com
  
