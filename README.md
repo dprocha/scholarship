@@ -18,3 +18,10 @@ Banco de dados GEOCAPES.
 
 ###### 5.Metodologia ######
 O primeiro passo para a elaboração do trabalho será realizar o download da base de dados disponível no GEOCAPES no período de 1995 e 2014. Após, será implementado um programa, utilizando a linguagem de programação Python, a fim de realizar a análise dos dados. O próximo passo para a execução do projeto será disponibilizar o resultado das análises em modo de texto
+
+###### 6.Tecnologias e Frameworks  ######
+Abaixo segue as tecnologias utilizadas para implementação desse projeto
+
+* Python 3.5.1
+* Banco de dados MySQL 5.7
+* Django 1.9.0
